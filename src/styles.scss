@@ -1,15 +1,12 @@
 @use '@angular/material' as mat;
-@use '@angular/material/theming' as mat-theming; 
 
 // Include the common styles for Angular Material
 @include mat.core();
 
 // Define custom palettes
-$primary-palette: mat-theming.$indigo-palette; 
-$accent-palette: mat-theming.$amber-palette;
-$warn-palette: mat-theming.$red-palette;
-
-
+$primary-palette: mat.$indigo-palette;
+$accent-palette: mat.$amber-palette;
+$warn-palette: mat.$red-palette;
 
 // Create the theme object
 $theme: mat.define-light-theme((
