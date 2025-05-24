@@ -29,15 +29,14 @@
           "options": {
             "assets": [
               "src/favicon.ico",
-              "src/assets",
-              "src/manifest.webmanifest"
+              "src/assets"
             ],
             "index": "src/index.html",
             "browser": "src/main.ts",
             "outputPath": "dist/angular-common-utils",
             "polyfills": ["zone.js"],
             "scripts": [],
-            "styles": ["src/styles.scss", "src/global_styles.css"],
+            "styles": ["src/global_styles.css", "src/styles.scss"],
             "tsConfig": "tsconfig.app.json"
           }
         },
