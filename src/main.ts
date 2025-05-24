@@ -13,24 +13,22 @@ import { Subject } from "rxjs";
   standalone: true,
   imports: [CommonModule, RegistrationFormComponent, DotLoaderComponent],
   template: `
-      <div
-      *ngIf="(_appUpdateService.available$ | async)"
-      class="msg-wrapper"
-    >
-      A new version of this site is available.
-      <a (click)="_appUpdateService.activateUpdate()" class="reload-link">Reload Now</a> to
-      activate it.
-    </div>
+    @if (_appUpdateService.available$ | async) {
+      <div class="msg-wrapper">
+        A new version of this site is available.
+        <a (click)="_appUpdateService.activateUpdate()" class="reload-link">Reload Now</a> to
+        activate it.
+      </div>
+    }
 
-
-    @if(showLoader) {
-    <app-dot-loader class="loader-container"></app-dot-loader>
+    @if (showLoader) {
+      <app-dot-loader class="loader-container"></app-dot-loader>
     } @else {
-    <app-registration-form class="container"></app-registration-form>
+      <app-registration-form class="container"></app-registration-form>
     }
   `,
 })
-export class App implements OnDestroy{
+export class App implements OnDestroy {
   showLoader = true;
   onDestroy = new Subject<void>();
 
@@ -39,7 +37,7 @@ export class App implements OnDestroy{
       this.showLoader = false;
     }, 2000);
 
-      this._appUpdateService.available$
+    this._appUpdateService.available$
       .pipe(takeUntil(this.onDestroy))
       .subscribe((res: any) => { console.log('App Update available? -> ', res); });
   }

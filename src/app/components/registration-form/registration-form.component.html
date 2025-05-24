@@ -19,9 +19,9 @@
         formControlName="username"
         [ngClass]="{ invalid: submitted && f['username'].errors }"
       />
-      <div class="error-message" *ngIf="submitted && f['username'].errors">
-        {{ getErrorMessage("username") }}
-      </div>
+      @if (submitted && f['username'].errors) {
+        <div class="error-message">{{ getErrorMessage("username") }}</div>
+      }
     </div>
 
     <div class="form-field">
@@ -32,9 +32,9 @@
         formControlName="firstName"
         [ngClass]="{ invalid: submitted && f['firstName'].errors }"
       />
-      <div class="error-message" *ngIf="submitted && f['firstName'].errors">
-        {{ getErrorMessage("firstName") }}
-      </div>
+      @if (submitted && f['firstName'].errors) {
+        <div class="error-message">{{ getErrorMessage("firstName") }}</div>
+      }
     </div>
 
     <div class="form-field">
@@ -45,9 +45,9 @@
         formControlName="lastName"
         [ngClass]="{ invalid: submitted && f['lastName'].errors }"
       />
-      <div class="error-message" *ngIf="submitted && f['lastName'].errors">
-        {{ getErrorMessage("lastName") }}
-      </div>
+      @if (submitted && f['lastName'].errors) {
+        <div class="error-message">{{ getErrorMessage("lastName") }}</div>
+      }
     </div>
 
     <div class="form-field">
@@ -58,9 +58,9 @@
         formControlName="email"
         [ngClass]="{ invalid: submitted && f['email'].errors }"
       />
-      <div class="error-message" *ngIf="submitted && f['email'].errors">
-        {{ getErrorMessage("email") }}
-      </div>
+      @if (submitted && f['email'].errors) {
+        <div class="error-message">{{ getErrorMessage("email") }}</div>
+      }
     </div>
 
     <div class="form-field">
@@ -71,9 +71,9 @@
         formControlName="phone"
         [ngClass]="{ invalid: submitted && f['phone'].errors }"
       />
-      <div class="error-message" *ngIf="submitted && f['phone'].errors">
-        {{ getErrorMessage("phone") }}
-      </div>
+      @if (submitted && f['phone'].errors) {
+        <div class="error-message">{{ getErrorMessage("phone") }}</div>
+      }
     </div>
 
     <div class="form-field">
@@ -84,9 +84,9 @@
         formControlName="age"
         [ngClass]="{ invalid: submitted && f['age'].errors }"
       />
-      <div class="error-message" *ngIf="submitted && f['age'].errors">
-        {{ getErrorMessage("age") }}
-      </div>
+      @if (submitted && f['age'].errors) {
+        <div class="error-message">{{ getErrorMessage("age") }}</div>
+      }
     </div>
 
     <div class="form-field">
@@ -97,9 +97,9 @@
         formControlName="birthDate"
         [ngClass]="{ invalid: submitted && f['birthDate'].errors }"
       />
-      <div class="error-message" *ngIf="submitted && f['birthDate'].errors">
-        {{ getErrorMessage("birthDate") }}
-      </div>
+      @if (submitted && f['birthDate'].errors) {
+        <div class="error-message">{{ getErrorMessage("birthDate") }}</div>
+      }
     </div>
 
     <div class="form-field">
@@ -111,9 +111,9 @@
         autocomplete="off"
         [ngClass]="{ invalid: submitted && f['password'].errors }"
       />
-      <div class="error-message" *ngIf="submitted && f['password'].errors">
-        {{ getErrorMessage("password") }}
-      </div>
+      @if (submitted && f['password'].errors) {
+        <div class="error-message">{{ getErrorMessage("password") }}</div>
+      }
     </div>
 
     <div class="form-field">
@@ -125,12 +125,9 @@
         formControlName="confirmPassword"
         [ngClass]="{ invalid: submitted && f['confirmPassword'].errors }"
       />
-      <div
-        class="error-message"
-        *ngIf="submitted && f['confirmPassword'].errors"
-      >
-        {{ getErrorMessage("confirmPassword") }}
-      </div>
+      @if (submitted && f['confirmPassword'].errors) {
+        <div class="error-message">{{ getErrorMessage("confirmPassword") }}</div>
+      }
     </div>
 
     <div class="form-field">
@@ -141,9 +138,9 @@
         formControlName="website"
         [ngClass]="{ invalid: submitted && f['website'].errors }"
       />
-      <div class="error-message" *ngIf="submitted && f['website'].errors">
-        {{ getErrorMessage("website") }}
-      </div>
+      @if (submitted && f['website'].errors) {
+        <div class="error-message">{{ getErrorMessage("website") }}</div>
+      }
     </div>
 
     <div class="form-field">
@@ -155,12 +152,11 @@
         maxlength="6"
         [ngClass]="{ invalid: submitted && f['otp'].errors }"
       />
-      <div class="error-message" *ngIf="submitted && f['otp'].errors">
-        {{ getErrorMessage("otp") }}
-      </div>
+      @if (submitted && f['otp'].errors) {
+        <div class="error-message">{{ getErrorMessage("otp") }}</div>
+      }
     </div>
 
-    <!-- Address Fields -->
     <div class="form-field">
       <label for="streetAddress">Street Address</label>
       <input
@@ -169,9 +165,9 @@
         formControlName="streetAddress"
         [ngClass]="{ invalid: submitted && f['streetAddress'].errors }"
       />
-      <div class="error-message" *ngIf="submitted && f['streetAddress'].errors">
-        {{ getErrorMessage("streetAddress") }}
-      </div>
+      @if (submitted && f['streetAddress'].errors) {
+        <div class="error-message">{{ getErrorMessage("streetAddress") }}</div>
+      }
     </div>
 
     <div class="form-field">
@@ -182,9 +178,9 @@
         formControlName="city"
         [ngClass]="{ invalid: submitted && f['city'].errors }"
       />
-      <div class="error-message" *ngIf="submitted && f['city'].errors">
-        {{ getErrorMessage("city") }}
-      </div>
+      @if (submitted && f['city'].errors) {
+        <div class="error-message">{{ getErrorMessage("city") }}</div>
+      }
     </div>
 
     <div class="form-field">
@@ -196,9 +192,9 @@
         maxlength="2"
         [ngClass]="{ invalid: submitted && f['state'].errors }"
       />
-      <div class="error-message" *ngIf="submitted && f['state'].errors">
-        {{ getErrorMessage("state") }}
-      </div>
+      @if (submitted && f['state'].errors) {
+        <div class="error-message">{{ getErrorMessage("state") }}</div>
+      }
     </div>
 
     <div class="form-field">
@@ -209,12 +205,11 @@
         formControlName="zipCode"
         [ngClass]="{ invalid: submitted && f['zipCode'].errors }"
       />
-      <div class="error-message" *ngIf="submitted && f['zipCode'].errors">
-        {{ getErrorMessage("zipCode") }}
-      </div>
+      @if (submitted && f['zipCode'].errors) {
+        <div class="error-message">{{ getErrorMessage("zipCode") }}</div>
+      }
     </div>
 
-    <!-- Geographic Location -->
     <div class="form-field">
       <label for="coordinates">Coordinates (Optional)</label>
       <input
@@ -224,12 +219,11 @@
         placeholder="latitude,longitude"
         [ngClass]="{ invalid: submitted && f['coordinates'].errors }"
       />
-      <div class="error-message" *ngIf="submitted && f['coordinates'].errors">
-        {{ getErrorMessage("coordinates") }}
-      </div>
+      @if (submitted && f['coordinates'].errors) {
+        <div class="error-message">{{ getErrorMessage("coordinates") }}</div>
+      }
     </div>
 
-    <!-- File Upload -->
     <div class="form-field">
       <label for="profilePicture">Profile Picture (Optional)</label>
       <input
@@ -239,12 +233,9 @@
         (change)="onFileChange($event)"
         [ngClass]="{ invalid: submitted && f['profilePicture'].errors }"
       />
-      <div
-        class="error-message"
-        *ngIf="submitted && f['profilePicture'].errors"
-      >
-        {{ getErrorMessage("profilePicture") }}
-      </div>
+      @if (submitted && f['profilePicture'].errors) {
+        <div class="error-message">{{ getErrorMessage("profilePicture") }}</div>
+      }
     </div>
 
     <div class="form-actions">
