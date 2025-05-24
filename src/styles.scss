@@ -3,24 +3,20 @@
 // Include the common styles for Angular Material
 @include mat.core();
 
-// Define custom palettes
-$primary-palette: mat.$indigo-palette;
-$accent-palette: mat.$amber-palette;
-$warn-palette: mat.$red-palette;
-
-// Create the theme object
+// Create theme using base colors directly
 $theme: mat.define-light-theme((
   color: (
-    primary: mat.define-palette($primary-palette),
-    accent: mat.define-palette($accent-palette),
-    warn: mat.define-palette($warn-palette),
+    primary: mat.define-palette(mat.$indigo),
+    accent: mat.define-palette(mat.$amber),
+    warn: mat.define-palette(mat.$red),
   ),
   typography: mat.define-typography-config(),
   density: 0
 ));
 
-// Include theme styles for core and each component used in your app
+// Include theme styles for core and components
 @include mat.all-component-themes($theme);
+
 
 .container {
   max-width: 800px;
