@@ -68,6 +68,14 @@ export class RegistrationFormComponent implements OnInit {
   }
 
   onSubmit(): void {
+      
+    this.dialog.open(SuccessDialogComponent, {
+      width: '400px',
+      disableClose: true,
+      autoFocus: false
+    });
+    return;
+    
     this.submitted = true;
 
     if (this.registrationForm.invalid) {
@@ -75,12 +83,7 @@ export class RegistrationFormComponent implements OnInit {
     }
 
     console.log('Form submitted successfully:', this.registrationForm.value);
-    
-    this.dialog.open(SuccessDialogComponent, {
-      width: '400px',
-      disableClose: true,
-      autoFocus: false
-    });
+  
 
     this.registrationForm.reset();
     this.submitted = false;
