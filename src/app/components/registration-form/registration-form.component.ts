@@ -85,9 +85,6 @@ export class RegistrationFormComponent implements OnInit {
   }
 
   onSubmit(): void {
-    this.openSuccessDialog();
-   
-    return;
     
     this.submitted = true;
 
