@@ -1,16 +1,14 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import {
-  FormBuilder,
-  FormGroup,
-  ReactiveFormsModule,
-} from '@angular/forms';
+import { FormBuilder, FormGroup, ReactiveFormsModule } from '@angular/forms';
+import { MatDialog, MatDialogModule } from '@angular/material/dialog';
 import { CustomValidators } from '../../validators/validators.util';
+import { SuccessDialogComponent } from '../success-dialog/success-dialog.component';
 
 @Component({
   selector: 'app-registration-form',
   standalone: true,
-  imports: [CommonModule, ReactiveFormsModule],
+  imports: [CommonModule, ReactiveFormsModule, MatDialogModule],
   templateUrl: './registration-form.component.html',
   styleUrls: ['./registration-form.component.scss'],
 })
@@ -19,7 +17,10 @@ export class RegistrationFormComponent implements OnInit {
   submitted = false;
   selectedFile: File | null = null;
 
-  constructor(private fb: FormBuilder) {}
+  constructor(
+    private fb: FormBuilder,
+    private dialog: MatDialog
+  ) {}
 
   ngOnInit(): void {
     this.initForm();
@@ -27,76 +28,28 @@ export class RegistrationFormComponent implements OnInit {
 
   initForm(): void {
     const minDate = new Date();
-    minDate.setFullYear(minDate.getFullYear() - 100); // 100 years ago
+    minDate.setFullYear(minDate.getFullYear() - 100);
     const maxDate = new Date();
-    maxDate.setFullYear(maxDate.getFullYear() - 13); // Must be at least 13 years old
+    maxDate.setFullYear(maxDate.getFullYear() - 13);
 
     this.registrationForm = this.fb.group({
       username: ['', [CustomValidators.required, CustomValidators.username]],
-      firstName: [
-        '',
-        [
-          CustomValidators.required,
-          CustomValidators.minLength(2),
-          CustomValidators.maxLength(50),
-        ],
-      ],
-      lastName: [
-        '',
-        [
-          CustomValidators.required,
-          CustomValidators.minLength(2),
-          CustomValidators.maxLength(50),
-        ],
-      ],
+      firstName: ['', [CustomValidators.required, CustomValidators.minLength(2), CustomValidators.maxLength(50)]],
+      lastName: ['', [CustomValidators.required, CustomValidators.minLength(2), CustomValidators.maxLength(50)]],
       email: ['', [CustomValidators.required, CustomValidators.email]],
       phone: ['', [CustomValidators.required, CustomValidators.phoneNumber]],
-      age: [
-        null,
-        [CustomValidators.required, CustomValidators.numberRange(18, 120)],
-      ],
-      birthDate: [
-        '',
-        [
-          CustomValidators.required,
-          CustomValidators.dateRange(minDate, maxDate),
-        ],
-      ],
-      password: [
-        '',
-        [
-          CustomValidators.required,
-          CustomValidators.minLength(8),
-          CustomValidators.strongPassword,
-        ],
-      ],
-      confirmPassword: [
-        '',
-        [CustomValidators.required, CustomValidators.mustMatch('password')],
-      ],
+      age: [null, [CustomValidators.required, CustomValidators.numberRange(18, 120)]],
+      birthDate: ['', [CustomValidators.required, CustomValidators.dateRange(minDate, maxDate)]],
+      password: ['', [CustomValidators.required, CustomValidators.minLength(8), CustomValidators.strongPassword]],
+      confirmPassword: ['', [CustomValidators.required, CustomValidators.mustMatch('password')]],
       website: ['', [CustomValidators.url]],
       otp: ['', [CustomValidators.required, CustomValidators.otp(6, 6)]],
-      // New address fields
-      streetAddress: [
-        '',
-        [CustomValidators.required, CustomValidators.streetAddress],
-      ],
+      streetAddress: ['', [CustomValidators.required, CustomValidators.streetAddress]],
       city: ['', [CustomValidators.required, CustomValidators.city]],
       state: ['', [CustomValidators.required, CustomValidators.state('US')]],
-      zipCode: [
-        '',
-        [CustomValidators.required, CustomValidators.zipCode('US')],
-      ],
-      // Geographic location
+      zipCode: ['', [CustomValidators.required, CustomValidators.zipCode('US')]],
       coordinates: ['', [CustomValidators.coordinates()]],
-      // File upload
-      profilePicture: [
-        null,
-        [
-          CustomValidators.fileSize(1 * 1024 * 1024), // 1MB
-          CustomValidators.fileType(['image/jpeg', 'image/png', 'image/gif']),
-        ],
-      ],
+      profilePicture: [null, [CustomValidators.fileSize(1 * 1024 * 1024), CustomValidators.fileType(['image/jpeg', 'image/png', 'image/gif'])]],
     });
   }
 
@@ -122,6 +75,12 @@ export class RegistrationFormComponent implements OnInit {
     }
 
     console.log('Form submitted successfully:', this.registrationForm.value);
+    
+    this.dialog.open(SuccessDialogComponent, {
+      width: '400px',
+      disableClose: true,
+      autoFocus: false
+    });
 
     this.registrationForm.reset();
     this.submitted = false;
@@ -168,13 +127,10 @@ export class RegistrationFormComponent implements OnInit {
       let message = 'Password must contain: ';
       const requirements = [];
 
-      if (!errors['strongPassword'].hasUpperCase)
-        requirements.push('uppercase letter');
-      if (!errors['strongPassword'].hasLowerCase)
-        requirements.push('lowercase letter');
+      if (!errors['strongPassword'].hasUpperCase) requirements.push('uppercase letter');
+      if (!errors['strongPassword'].hasLowerCase) requirements.push('lowercase letter');
       if (!errors['strongPassword'].hasNumber) requirements.push('number');
-      if (!errors['strongPassword'].hasSpecialChar)
-        requirements.push('special character');
+      if (!errors['strongPassword'].hasSpecialChar) requirements.push('special character');
 
       return message + requirements.join(', ');
     }
@@ -238,11 +194,9 @@ export class RegistrationFormComponent implements OnInit {
     if (errors['coordinates']) {
       return 'Please enter valid coordinates (latitude,longitude)';
     }
-    console.log(errors);
+
     if (errors['fileSize']) {
-      return `File size must be less than ${
-        errors['fileSize'].max / (1024 * 1024)
-      }MB`;
+      return `File size must be less than ${errors['fileSize'].max / (1024 * 1024)}MB`;
     }
 
     if (errors['fileType']) {

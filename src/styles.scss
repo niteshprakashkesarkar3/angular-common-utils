@@ -1,4 +1,43 @@
+@use '@angular/material' as mat;
 
+@include mat.core();
+
+$primary-palette: (
+  50: #e3f2fd,
+  100: #bbdefb,
+  500: #2196f3,
+  700: #1976d2,
+  contrast: (
+    50: rgba(black, 0.87),
+    100: rgba(black, 0.87),
+    500: white,
+    700: white,
+  )
+);
+
+$accent-palette: (
+  50: #fff3e0,
+  100: #ffe0b2,
+  500: #ff9800,
+  700: #f57c00,
+  contrast: (
+    50: rgba(black, 0.87),
+    100: rgba(black, 0.87),
+    500: white,
+    700: white,
+  )
+);
+
+$theme: mat.define-light-theme((
+  color: (
+    primary: mat.define-palette($primary-palette),
+    accent: mat.define-palette($accent-palette),
+  ),
+  typography: mat.define-typography-config(),
+  density: 0,
+));
+
+@include mat.all-component-themes($theme);
 
 .container {
   max-width: 800px;
@@ -17,7 +56,6 @@
   height: 100vh;
   width: 100vw;
 }
-
 
 .msg-wrapper {
   position: sticky;
@@ -40,4 +78,8 @@
   color: white;
   font-weight: 400;
   cursor: pointer;
+}
+
+.mat-mdc-dialog-container {
+  --mdc-dialog-container-color: white;
 }
