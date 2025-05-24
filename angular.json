@@ -36,7 +36,7 @@
             "outputPath": "dist/angular-common-utils",
             "polyfills": ["zone.js"],
             "scripts": [],
-            "styles": ["src/global_styles.css", "src/styles.scss"],
+            "styles": ["src/global_styles.scss", "src/styles.scss"],
             "tsConfig": "tsconfig.app.json"
           }
         },
