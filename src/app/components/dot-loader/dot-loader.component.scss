@@ -1,0 +1,26 @@
+.dot-loader {
+  font-size: 3rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: var(--primary-dark);
+}
+
+.dot {
+  opacity: 0;
+  animation: blink 1.5s infinite;
+}
+
+.delay1 {
+  animation-delay: 0.2s;
+}
+
+.delay2 {
+  animation-delay: 0.4s;
+}
+
+@keyframes blink {
+  0%, 20% { opacity: 0; }
+  50% { opacity: 1; }
+  100% { opacity: 0; }
+}
