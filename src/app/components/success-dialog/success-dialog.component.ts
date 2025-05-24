@@ -72,7 +72,7 @@ export class SuccessDialogComponent {
     public dialogRef: MatDialogRef<SuccessDialogComponent>,
     @Inject(MAT_DIALOG_DATA) public data: any
   ) {
-    this.startCountdown();
+    // this.startCountdown();
   }
 
   dismiss(): void {
@@ -86,6 +86,6 @@ export class SuccessDialogComponent {
         clearInterval(timer);
         this.dismiss();
       }
-    }, 1000);
+    }, 1000);  
   }
 }
