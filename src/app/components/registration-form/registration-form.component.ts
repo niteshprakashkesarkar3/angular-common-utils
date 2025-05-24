@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { FormBuilder, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { MatDialog, MatDialogModule } from '@angular/material/dialog';
 import { CustomValidators } from '../../validators/validators.util';
-import { WellnessScoreDialogComponent } from '../wellness-score-dialog/wellness-score-dialog.component.ts';
+import { WellnessScoreDialogComponent } from '../wellness-score-dialog/wellness-score-dialog.component';
 
 @Component({
   selector: 'app-registration-form',
