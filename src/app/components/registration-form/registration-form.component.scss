@@ -13,7 +13,6 @@ h2 {
   font-weight: 500;
 }
 
-
 .form-description {
   color: #666;
   margin-bottom: calc(var(--spacing) * 4);
@@ -66,6 +65,17 @@ input {
 
 button {
   min-width: 120px;
+}
+
+h1 {
+  color: var(--primary-dark);
+  margin-bottom: 16px;
+  font-weight: 500;
+}
+
+p {
+  color: #666;
+  margin-bottom: 24px;
 }
 
 @media (max-width: 600px) {

@@ -4,7 +4,6 @@ import {
   FormBuilder,
   FormGroup,
   ReactiveFormsModule,
-  Validators,
 } from '@angular/forms';
 import { CustomValidators } from '../../validators/validators.util';
 
