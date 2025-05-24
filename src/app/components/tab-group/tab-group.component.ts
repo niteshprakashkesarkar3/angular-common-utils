@@ -89,7 +89,7 @@ export class TabGroupComponent {
   @Input() tabs: TabItem[] = [];
   @Input() selectedIndex = 0;
   @Input() backgroundColor: ThemePalette = 'primary';
-  @Input() color: ThemePalette = 'primary';
+  @Input() color: ThemePalette = 'accent';
   @Input() animationDuration = '200ms';
 
   onTabChange(index: number): void {
