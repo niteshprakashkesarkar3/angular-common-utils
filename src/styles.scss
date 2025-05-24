@@ -2,41 +2,21 @@
 
 @include mat.core();
 
-$primary-palette: (
-  50: #e3f2fd,
-  100: #bbdefb,
-  500: #2196f3,
-  700: #1976d2,
-  contrast: (
-    50: rgba(black, 0.87),
-    100: rgba(black, 0.87),
-    500: white,
-    700: white,
-  )
-);
+// Define custom palettes
+$primary: mat.$indigo-palette;
+$accent: mat.$amber-palette;
+$warn: mat.$red-palette;
 
-$accent-palette: (
-  50: #fff3e0,
-  100: #ffe0b2,
-  500: #ff9800,
-  700: #f57c00,
-  contrast: (
-    50: rgba(black, 0.87),
-    100: rgba(black, 0.87),
-    500: white,
-    700: white,
-  )
-);
-
+// Create the theme object
 $theme: mat.define-light-theme((
   color: (
-    primary: mat.define-palette(mat.$blue-palette),
-    accent: mat.define-palette(mat.$orange-palette),
-  ),
-  typography: mat.define-typography-config(),
-  density: 0,
+    primary: mat.define-palette($primary),
+    accent: mat.define-palette($accent),
+    warn: mat.define-palette($warn),
+  )
 ));
 
+// Include theme styles for core and each component used in your app
 @include mat.all-component-themes($theme);
 
 .container {
