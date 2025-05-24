@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormBuilder, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { MatDialog, MatDialogModule } from '@angular/material/dialog';
@@ -26,10 +26,31 @@ import { TabGroupComponent, TabItem } from '../tab-group/tab-group.component';
 
       <app-tab-group [tabs]="formTabs"></app-tab-group>
     </div>
+
+    <ng-template #personalInfoTemplate>
+      <!-- Personal Info form fields will go here -->
+    </ng-template>
+
+    <ng-template #contactTemplate>
+      <!-- Contact form fields will go here -->
+    </ng-template>
+
+    <ng-template #securityTemplate>
+      <!-- Security form fields will go here -->
+    </ng-template>
+
+    <ng-template #addressTemplate>
+      <!-- Address form fields will go here -->
+    </ng-template>
   `,
   styleUrls: ['./registration-form.component.scss']
 })
 export class RegistrationFormComponent implements OnInit {
+  @ViewChild('personalInfoTemplate') personalInfoTemplate: any;
+  @ViewChild('contactTemplate') contactTemplate: any;
+  @ViewChild('securityTemplate') securityTemplate: any;
+  @ViewChild('addressTemplate') addressTemplate: any;
+
   registrationForm!: FormGroup;
   submitted = false;
   selectedFile: File | null = null;
