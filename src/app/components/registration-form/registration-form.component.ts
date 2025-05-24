@@ -5,18 +5,35 @@ import { MatDialog, MatDialogModule } from '@angular/material/dialog';
 import { CustomValidators } from '../../validators/validators.util';
 import { WellnessScoreDialogComponent } from '../wellness-score-dialog/wellness-score-dialog.component';
 import { SuccessDialogComponent} from '../success-dialog/success-dialog.component';
+import { TabGroupComponent, TabItem } from '../tab-group/tab-group.component';
 
 @Component({
   selector: 'app-registration-form',
   standalone: true,
-  imports: [CommonModule, ReactiveFormsModule, MatDialogModule],
-  templateUrl: './registration-form.component.html',
-  styleUrls: ['./registration-form.component.scss'],
+  imports: [CommonModule, ReactiveFormsModule, MatDialogModule, TabGroupComponent],
+  template: `
+    <h1 class="text-center">Angular Forms Validation Example</h1>
+    <p class="text-center">
+      This example demonstrates how to use custom validators with reactive forms in
+      Angular
+    </p>
+
+    <div class="form-container">
+      <h2 class="text-center">Validator's Examples</h2>
+      <p class="form-description text-center">
+        Some examples for various validators
+      </p>
+
+      <app-tab-group [tabs]="formTabs"></app-tab-group>
+    </div>
+  `,
+  styleUrls: ['./registration-form.component.scss']
 })
 export class RegistrationFormComponent implements OnInit {
   registrationForm!: FormGroup;
   submitted = false;
   selectedFile: File | null = null;
+  formTabs: TabItem[] = [];
 
   constructor(
     private fb: FormBuilder,
@@ -25,6 +42,32 @@ export class RegistrationFormComponent implements OnInit {
 
   ngOnInit(): void {
     this.initForm();
+    this.initTabs();
+  }
+
+  initTabs(): void {
+    this.formTabs = [
+      {
+        label: 'Personal Info',
+        icon: 'person',
+        content: this.personalInfoTemplate
+      },
+      {
+        label: 'Contact',
+        icon: 'contact_mail',
+        content: this.contactTemplate
+      },
+      {
+        label: 'Security',
+        icon: 'security',
+        content: this.securityTemplate
+      },
+      {
+        label: 'Address',
+        icon: 'home',
+        content: this.addressTemplate
+      }
+    ];
   }
 
   initForm(): void {
