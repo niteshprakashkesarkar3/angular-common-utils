@@ -17,7 +17,7 @@ import { MatButtonModule } from '@angular/material/button';
       </div>
       <h2 class="title">User updated successfully</h2>
       <div class="actions">
-        <button mat-stroked-button color="primary" (click)="dismiss()">Dismiss</button>
+        <button class="dismiss-button" (click)="dismiss()">Dismiss</button>
       </div>
       <p class="auto-dismiss">Message will automatically dismiss in {{timeLeft}} seconds</p>
     </div>
@@ -48,10 +48,20 @@ import { MatButtonModule } from '@angular/material/button';
       font-size: 14px;
       margin: 0;
     }
-    button {
+    .dismiss-button {
       min-width: 120px;
-      border-color: #FF9800;
+      padding: 8px 24px;
+      border: 1px solid #FF9800;
+      border-radius: 24px;
+      background: transparent;
       color: #FF9800;
+      font-size: 16px;
+      font-weight: 500;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+    .dismiss-button:hover {
+      background: rgba(255, 152, 0, 0.1);
     }
   `]
 })
