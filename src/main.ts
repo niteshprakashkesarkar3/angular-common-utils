@@ -14,7 +14,7 @@ import { Subject } from "rxjs";
   imports: [CommonModule, RegistrationFormComponent, DotLoaderComponent],
   template: `
       <div
-      *ngIf="(_appUpdateService.available$ | async) || true"
+      *ngIf="(_appUpdateService.available$ | async)"
       class="msg-wrapper"
     >
       A new version of this site is available.
