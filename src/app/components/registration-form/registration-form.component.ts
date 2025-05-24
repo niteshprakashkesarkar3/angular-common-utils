@@ -70,7 +70,7 @@ export class RegistrationFormComponent implements OnInit {
   onSubmit(): void {
       
     this.dialog.open(WellnessScoreDialogComponent, {
-      width: '400px',
+      width: '700px',
       disableClose: true,
       autoFocus: false
     });
