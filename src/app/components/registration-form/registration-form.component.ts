@@ -11,7 +11,7 @@ import { TabGroupComponent, TabItem } from '../tab-group/tab-group.component';
   selector: 'app-registration-form',
   standalone: true,
   imports: [CommonModule, ReactiveFormsModule, MatDialogModule, TabGroupComponent],
-  template: './registration-form.component.html',
+  templateUrl: './registration-form.component.html',
   styleUrls: ['./registration-form.component.scss']
 })
 export class RegistrationFormComponent implements OnInit {
