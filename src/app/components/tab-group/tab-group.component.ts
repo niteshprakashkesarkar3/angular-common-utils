@@ -1,6 +1,7 @@
 import { Component, Input } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MatTabsModule } from '@angular/material/tabs';
+import { ThemePalette } from '@angular/material/core';
 
 export interface TabItem {
   label: string;
@@ -87,8 +88,8 @@ export interface TabItem {
 export class TabGroupComponent {
   @Input() tabs: TabItem[] = [];
   @Input() selectedIndex = 0;
-  @Input() backgroundColor = 'primary';
-  @Input() color = 'primary';
+  @Input() backgroundColor: ThemePalette = 'primary';
+  @Input() color: ThemePalette = 'primary';
   @Input() animationDuration = '200ms';
 
   onTabChange(index: number): void {
