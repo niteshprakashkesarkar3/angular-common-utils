@@ -4,6 +4,7 @@ import { FormBuilder, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { MatDialog, MatDialogModule } from '@angular/material/dialog';
 import { CustomValidators } from '../../validators/validators.util';
 import { WellnessScoreDialogComponent } from '../wellness-score-dialog/wellness-score-dialog.component';
+import { SuccessDialogComponent} from '../success-dialog/success-dialog.component';
 
 @Component({
   selector: 'app-registration-form',
@@ -67,13 +68,25 @@ export class RegistrationFormComponent implements OnInit {
     return this.registrationForm.controls;
   }
 
-  onSubmit(): void {
-      
-    this.dialog.open(WellnessScoreDialogComponent, {
+  openWellnessScoreDialog() {
+     this.dialog.open(WellnessScoreDialogComponent, {
       width: '700px',
       disableClose: true,
       autoFocus: false
     });
+  }
+
+  openSuccessDialog() {
+     this.dialog.open(SuccessDialogComponent, {
+      width: '700px',
+      disableClose: true,
+      autoFocus: false
+    });
+  }
+
+  onSubmit(): void {
+      
+   
     return;
     
     this.submitted = true;
