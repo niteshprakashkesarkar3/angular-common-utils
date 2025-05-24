@@ -78,7 +78,7 @@ export class RegistrationFormComponent implements OnInit {
 
   openSuccessDialog() {
      this.dialog.open(SuccessDialogComponent, {
-      width: '700px',
+      width: '680px',
       disableClose: true,
       autoFocus: false
     });
