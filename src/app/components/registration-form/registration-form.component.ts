@@ -11,38 +11,7 @@ import { TabGroupComponent, TabItem } from '../tab-group/tab-group.component';
   selector: 'app-registration-form',
   standalone: true,
   imports: [CommonModule, ReactiveFormsModule, MatDialogModule, TabGroupComponent],
-  template: `
-    <h1 class="text-center">Angular Forms Validation Example</h1>
-    <p class="text-center">
-      This example demonstrates how to use custom validators with reactive forms in
-      Angular
-    </p>
-
-    <div class="form-container">
-      <h2 class="text-center">Validator's Examples</h2>
-      <p class="form-description text-center">
-        Some examples for various validators
-      </p>
-
-      <app-tab-group [tabs]="formTabs"></app-tab-group>
-    </div>
-
-    <ng-template #personalInfoTemplate>
-      <!-- Personal Info form fields will go here -->
-    </ng-template>
-
-    <ng-template #contactTemplate>
-      <!-- Contact form fields will go here -->
-    </ng-template>
-
-    <ng-template #securityTemplate>
-      <!-- Security form fields will go here -->
-    </ng-template>
-
-    <ng-template #addressTemplate>
-      <!-- Address form fields will go here -->
-    </ng-template>
-  `,
+  template: './registration-form.component.html',
   styleUrls: ['./registration-form.component.scss']
 })
 export class RegistrationFormComponent implements OnInit {
