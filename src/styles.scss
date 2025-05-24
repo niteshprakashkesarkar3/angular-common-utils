@@ -2,19 +2,17 @@
 
 @include mat.core();
 
-$my-theme: mat.define-theme((
+$theme: mat.define-light-theme((
   color: (
-    theme-type: light,
-    primary: mat.define-palette(mat.$indigo),
-    accent: mat.define-palette(mat.$amber),
-    warn: mat.define-palette(mat.$red),
+    primary: mat.define-palette(mat.$indigo-palette),
+    accent: mat.define-palette(mat.$amber-palette),
+    warn: mat.define-palette(mat.$red-palette),
   ),
   typography: mat.define-typography-config(),
-  density: 0,
+  density: 0
 ));
 
-// Apply theme to all components
-@include mat.all-component-themes($my-theme);
+@include mat.all-component-themes($theme);
 
 
 
